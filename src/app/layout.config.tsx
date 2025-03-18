@@ -19,14 +19,24 @@ export const baseOptions: BaseLayoutProps = {
         >
           <circle cx={12} cy={12} r={12} fill="currentColor" />
         </svg>
-        My App
+        Glowy International
       </>
     ),
   },
   links: [
     {
-      text: 'Documentation',
+      text: 'Mission',
+      url: '/mission',
+      active: 'nested-url',
+    },
+    {
+      text: 'Learn',
       url: '/docs',
+      active: 'nested-url',
+    },
+    {
+      text: 'Blog',
+      url: '/blog',
       active: 'nested-url',
     },
   ],

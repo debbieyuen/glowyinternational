@@ -1,10 +1,11 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export default function HomePage() {
   return (
     <main className="flex flex-1 flex-col justify-center text-center">
-      <h1 className="mb-4 text-2xl font-bold">Hello World</h1>
-      <p className="text-fd-muted-foreground">
+      <h1 className="mb-4 text-9xl font-bold">Glowy</h1>
+      <h2 className="mb-9 text-3xl font-bold">A nonprofit inspiring makers around the world in inventing together</h2>
+      {/* <p className="text-fd-muted-foreground">
         You can open{' '}
         <Link
           href="/docs"
@@ -13,7 +14,7 @@ export default function HomePage() {
           /docs
         </Link>{' '}
         and see the documentation.
-      </p>
+      </p> */}
     </main>
   );
 }
