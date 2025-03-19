@@ -17,7 +17,7 @@
 }
 
 .overlay-text {
-    margin-top: 75vh;
+    margin-top: 68vh;
     position: absolute; /* Position relative to the nearest positioned ancestor */
     justify-content: center;
     align-items: flex-end;
