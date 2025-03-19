@@ -67,7 +67,7 @@ export const baseOptions: BaseLayoutProps = {
 
         // Artificial Intelligence/Machine Learning
         {
-          text: 'Artificial Intelligence and Machine Learning',
+          text: 'Artificial Intelligence and Machine Learning (AI/ML)',
           description: 'Integrate AI/ML libraries and packages',
           url: '/docs',
  
@@ -80,10 +80,10 @@ export const baseOptions: BaseLayoutProps = {
           },
         },
 
-                // Artificial Intelligence/Machine Learning
+                // 3D and 2D User Interface Design
         {
-          text: 'Artificial Intelligence and Machine Learning',
-          description: 'Integrate AI/ML libraries and packages',
+          text: 'User Interface and Experience Design (UI/UX)',
+          description: 'UI/UX Design for 2D and 3D applications',
           url: '/docs',
  
           // (optional) Props for Radix UI Navigation Menu item in Home Layout
@@ -91,7 +91,7 @@ export const baseOptions: BaseLayoutProps = {
             className: 'row-span-2',
             // add banner to navigation menu card
             // can be an image or other elements
-            banner: <div>Image: Artificial Intelligence and Machine Learning</div>,
+            banner: <div>Image: Design</div>,
           },
         },
         
