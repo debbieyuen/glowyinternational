@@ -3,3 +3,29 @@
 @import 'fumadocs-ui/css/preset.css';
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
+
+.title {
+    font-size: 10rem;
+    bottom: 0;
+    font-weight: 900;
+    /* background-color: red; */
+}
+
+.overlay-text {
+    position: absolute; /* Position relative to the nearest positioned ancestor */
+    justify-content: center;
+    align-items: flex-end;
+    height: 30vh;
+    width: 100%;
+    /* top: 10px;
+    left: 10px; */
+    /* background-color: rgba(255, 255, 255, 0.7); Optional: add background for readability */
+    padding: 5px;
+    z-index: 1; /* Ensure it's above other content */
+}
+
+.map-background {
+    position: flex;
+    width: 100%;
+    height:100vh;
+}

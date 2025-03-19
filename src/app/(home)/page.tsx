@@ -14,9 +14,15 @@ export default function HomePage() {
   const { theme } = useTheme();
 
   return (
-    <main>
-    {/* <main className="flex flex-1 flex-col justify-center text-center"></main> */}
-      <div className ="flex flex-col h-screen w-full">
+    <main className="justify-center text-center">
+    {/* <main className="flex flex-1 flex-col justify-center text-center"> */}
+      {/* <div className ="flex flex-col h-screen w-full"> */}
+      <div className="overlay-text">
+        <h1 className="title">Welcome to Glowy</h1>
+        <h2 className="subtitle">Learning and inventing to bring light around the world</h2>
+      </div>
+      
+      <div className ="map-background">
         <Map
           mapboxAccessToken={mapboxToken}
           initialViewState={{
@@ -32,9 +38,9 @@ export default function HomePage() {
         }
       />
       </div>
-      <h1 className="mb-4 text-9xl font-bold">Glowy</h1>
-      <h2 className="mb-9 text-3xl font-bold">Learning and inventing to bring light around the world</h2>
-      <button>click me</button>
+      {/* <h1 className="mb-4 text-9xl font-bold">Glowy</h1> */}
+      {/* <h2 className="mb-9 text-3xl font-bold">Learning and inventing to bring light around the world</h2> */}
+      {/* <button>click me</button> */}
       {/* <p className="text-fd-muted-foreground">
         You can open{' '}
         <Link
