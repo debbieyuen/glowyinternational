@@ -29,10 +29,87 @@ export const baseOptions: BaseLayoutProps = {
       url: '/mission',
       active: 'nested-url',
     },
+    // Navigation Menu: https://fumadocs.vercel.app/docs/ui/navigation 
     {
-      text: 'Learn',
+      type: 'menu',
       url: '/docs',
-      active: 'nested-url',
+      text: 'Learn',
+      items: [
+        // Game Development
+        {
+          text: 'Game Development and Design',
+          description: 'Create games with Unity and Unreal',
+          url: '/docs',
+ 
+          // (optional) Props for Radix UI Navigation Menu item in Home Layout
+          menu: {
+            className: 'row-span-2',
+            // add banner to navigation menu card
+            // can be an image or other elements
+            banner: <div>Image: Game Development and Design</div>,
+          },
+        },
+
+        // Extended Reality (XR)
+        {
+          text: 'Extended Reality (XR)',
+          description: 'Develop AR/VR apps for mobile, web, and headsets',
+          url: '/docs',
+ 
+          // (optional) Props for Radix UI Navigation Menu item in Home Layout
+          menu: {
+            className: 'row-span-2',
+            // add banner to navigation menu card
+            // can be an image or other elements
+            banner: <div>Image: Extended Reality (XR)</div>,
+          },
+        },
+
+        // Artificial Intelligence/Machine Learning
+        {
+          text: 'Artificial Intelligence and Machine Learning',
+          description: 'Integrate AI/ML libraries and packages',
+          url: '/docs',
+ 
+          // (optional) Props for Radix UI Navigation Menu item in Home Layout
+          menu: {
+            className: 'row-span-2',
+            // add banner to navigation menu card
+            // can be an image or other elements
+            banner: <div>Image: Artificial Intelligence and Machine Learning</div>,
+          },
+        },
+
+                // Artificial Intelligence/Machine Learning
+        {
+          text: 'Artificial Intelligence and Machine Learning',
+          description: 'Integrate AI/ML libraries and packages',
+          url: '/docs',
+ 
+          // (optional) Props for Radix UI Navigation Menu item in Home Layout
+          menu: {
+            className: 'row-span-2',
+            // add banner to navigation menu card
+            // can be an image or other elements
+            banner: <div>Image: Artificial Intelligence and Machine Learning</div>,
+          },
+        },
+        
+        // Embedded Systems
+        {
+          text: 'Embedded Systems',
+          description: 'Build with Arduino and Raspberry Pi',
+          url: '/docs',
+ 
+          // (optional) Props for Radix UI Navigation Menu item in Home Layout
+          menu: {
+            className: 'row-span-2',
+            // add banner to navigation menu card
+            // can be an image or other elements
+            banner: <div>Image: Embedded Systems</div>,
+          },
+        },
+      ],
     },
     {
       text: 'Blog',
@@ -41,3 +118,4 @@ export const baseOptions: BaseLayoutProps = {
     },
   ],
 };
+
