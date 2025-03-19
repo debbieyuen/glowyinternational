@@ -14,7 +14,8 @@ export default function HomePage() {
   const { theme } = useTheme();
 
   return (
-    <main className="flex flex-1 flex-col justify-center text-center">
+    <main>
+    {/* <main className="flex flex-1 flex-col justify-center text-center"></main> */}
       <div className ="flex flex-col h-screen w-full">
         <Map
           mapboxAccessToken={mapboxToken}
