@@ -8,15 +8,22 @@
     font-size: 10rem;
     bottom: 0;
     font-weight: 900;
+    text-shadow: 10px 10px 100px goldenrod;
     /* background-color: red; */
 }
 
+.subtitle {
+    text-shadow: 5px 5px 20px goldenrod;
+}
+
 .overlay-text {
+    margin-top: 75vh;
     position: absolute; /* Position relative to the nearest positioned ancestor */
     justify-content: center;
     align-items: flex-end;
     height: 30vh;
     width: 100%;
+    text-shadow: 10px 10px 400px orange;
     /* top: 10px;
     left: 10px; */
     /* background-color: rgba(255, 255, 255, 0.7); Optional: add background for readability */

@@ -18,7 +18,7 @@ export default function HomePage() {
     {/* <main className="flex flex-1 flex-col justify-center text-center"> */}
       {/* <div className ="flex flex-col h-screen w-full"> */}
       <div className="overlay-text">
-        <h1 className="title">Welcome to Glowy</h1>
+        <h1 className="title">glowy</h1>
         <h2 className="subtitle">Learning and inventing to bring light around the world</h2>
       </div>
       
