@@ -15,21 +15,22 @@ export default function HomePage() {
 
   return (
     <main className="flex flex-1 flex-col justify-center text-center">
-      <Map
-      mapboxAccessToken={mapboxToken}
-      initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14
-      }}
-      style={{width: 600, height: 400}}
-      mapStyle={
-        theme === "light"
-        ? "mapbox://styles/mapbox/streets-v9"
-        : "mapbox://styles/mapbox/dark-v10"
-      }
-    />
-
+      <div className ="flex flex-col h-screen w-full">
+        <Map
+          mapboxAccessToken={mapboxToken}
+          initialViewState={{
+            longitude: -122.4,
+            latitude: 37.8,
+            zoom: 14
+        }}
+        // style={{width: 100, height: 100}}
+        mapStyle={
+          theme === "light"
+          ? "mapbox://styles/mapbox/streets-v9"
+          : "mapbox://styles/mapbox/dark-v10"
+        }
+      />
+      </div>
       <h1 className="mb-4 text-9xl font-bold">Glowy</h1>
       <h2 className="mb-9 text-3xl font-bold">Learning and inventing to bring light around the world</h2>
       <button>click me</button>
