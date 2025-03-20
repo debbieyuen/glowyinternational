@@ -14,7 +14,7 @@ export default function HomePage() {
   const { theme } = useTheme();
 
   return (
-    <main className="justify-center text-center">
+    <main className="main-class">
     {/* <main className="flex flex-1 flex-col justify-center text-center"> */}
       {/* <div className ="flex flex-col h-screen w-full"> */}
       <div className="overlay-text">

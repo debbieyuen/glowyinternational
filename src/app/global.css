@@ -4,6 +4,20 @@
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+.main-class {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0vh;
+    margin-top: 0vh;
+    margin: 0vh;
+}
 .title {
     font-size: 10rem;
     bottom: 0;
@@ -33,7 +47,10 @@
 }
 
 .map-background {
-    position: flex;
-    width: 100%;
+    position: fixed;
+    width: 100vw;
     height:100vh;
+    /* z-index: -1; */
+    padding: 0;
+    margin: 0;
 }
