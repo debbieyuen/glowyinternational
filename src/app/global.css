@@ -14,6 +14,7 @@
 
 .subtitle {
     text-shadow: 5px 5px 20px goldenrod;
+    font-weight: 600;
 }
 
 .overlay-text {
