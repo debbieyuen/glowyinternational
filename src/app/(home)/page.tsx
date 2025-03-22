@@ -26,15 +26,15 @@ export default function HomePage() {
         <Map
           mapboxAccessToken={mapboxToken}
           initialViewState={{
-            longitude: -122.4,
-            latitude: 37.8,
-            zoom: 14
+            longitude: 0,
+            latitude: 20,
+            zoom: 2.5
         }}
         // style={{width: 100, height: 100}}
         mapStyle={
           theme === "light"
           ? "mapbox://styles/mapbox/streets-v9"
-          : "mapbox://styles/mapbox/dark-v10"
+          : "mapbox://styles/mapbox/navigation-night-v1"
         }
       />
       </div>
