@@ -17,7 +17,9 @@ body {
 
 .pt-14 {
     padding: 0;
+    padding-top: 0;
 }
+
 .main-class {
     display: flex;
     justify-content: center;
