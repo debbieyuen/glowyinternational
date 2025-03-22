@@ -4,10 +4,18 @@
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
 
+/* nav {
+    background-color: red;
+} */
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding: 0;
+}
+
+.pt-14 {
     padding: 0;
 }
 .main-class {
