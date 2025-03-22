@@ -1,5 +1,9 @@
 # glowy-app
 
+<img width="1694" alt="Screenshot 2025-03-19 at 3 06 43 PM" src="https://github.com/user-attachments/assets/38a401cf-8f5b-41d9-a5d2-fbfd250832d4" />
+<img width="1694" alt="Screenshot 2025-03-19 at 3 06 33 PM" src="https://github.com/user-attachments/assets/b3457fc8-6533-493f-b80d-d3ab7e5631b1" />
+
+
 This is a Next.js application generated with
 [Create Fumadocs](https://github.com/fuma-nama/fumadocs).
 
