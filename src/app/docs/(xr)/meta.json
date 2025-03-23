@@ -1,0 +1,6 @@
+{
+    "title": "Name of Folder",
+    "description": "The description of root folder (optional)",
+    "pages": ["what-is-xr"],
+    "root": true
+  }
