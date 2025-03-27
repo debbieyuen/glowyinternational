@@ -1,7 +1,5 @@
-# glowy-app
-
-<img width="1694" alt="Screenshot 2025-03-19 at 3 06 43 PM" src="https://github.com/user-attachments/assets/38a401cf-8f5b-41d9-a5d2-fbfd250832d4" />
-<img width="1694" alt="Screenshot 2025-03-19 at 3 06 33 PM" src="https://github.com/user-attachments/assets/b3457fc8-6533-493f-b80d-d3ab7e5631b1" />
+# The Milky Way Foundation 🌌
+<img width="3003" alt="Screenshot 2025-03-27 at 4 04 40 PM" src="https://github.com/user-attachments/assets/e0cb8016-aaa7-432d-88ab-733e15a98d03" />
 
 
 This is a Next.js application generated with
