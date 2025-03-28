@@ -3,9 +3,11 @@
     "pages": [
     "index", 
     "getting-started",
+    "ide",
     "game-engines",
     "source-control",
     "event-functions-unity",
+    "resources",
     "---Special Topics---",
     "reinforcement-learning",
     "game-ai",

@@ -1,17 +1,44 @@
 ---
-title: What source control should I use?
-description: Components
+title: Source and Version Control
+description: GitHub and Perforce
 ---
+What is source control? Source control and version control can used interchangeably. However, source control is specific to source code. Version control also covers large binary files and digital assets. Source control is important for maintaining a single source of truth for development teams. Using it helps facilitate collaboration and accelerates release velocity. Source control is a vital component of the development process with source code management systems allowing you to track your code change, see a revision history for your code, and revert to previous versions of a project when needed. With source code management systems, you can collaborate on code with your team, isolate your work until it is ready, and quickly trouble-shoot issues by identifying who made changes and what the changes were. Source code management systems help streamline the development process and provide a centralized source for all your code.
 
-## Code Block
 
-```js
-console.log('Hello World');
-```
+Source control is useful for a number of different reasons. It allows us to track and manage code, resolve code conflicts, and keeps a history of code development. Regardless of the source control of your choice, we recommend a couple of tips:
 
-## Cards
+1. **Commit:** Commit often and write short detailed notes for each commit. 
+2. **Branches:** Create branches while working in parallel with team members. With source control, multiple developers can work on the same codebase.
+3. **Merge Conflicts:** Beware of merge conflicts. It is best practice to `git pull` all the code before pushing yours. We want to be able to commit and merge code without conflicts. This way developers can edit shared code without unknowningly overwriting each other's work. 
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+In our guides, we will be using `Command Line` and `Terminal` to install packages and connect to Github. However, you are free to design your own workflow as you wish!
+
+## GitHub
+GitHub is a platform and cloud-based service for software development and version control using Git. In order to use GitHub for large files, we must also download Git Large File Storage (LFS). In class, we will be learning how to use `Git` with the terminal and with [GitHub Desktop](https://desktop.github.com/).
+
+<Callout title="Create a GitHub Account">
+
+    [Apply for GitHub Education](https://education.github.com/) and create an [account](https://github.com/).
+
+</Callout>
+
+<Callout title="Install Git and Git LFS">
+
+    Install [Git](https://git-scm.com/) and download [Git LFS](https://git-lfs.com/).
+
+</Callout>
+
+## Perforce
+Perforce is an industry standard in the game development industry in storing and sharing large projects and is known for its roots with version control. However, Perforce as a whole does much more than create version control tools. Perforce is ideal for large files and binaries that have a lot of assets. Perforce also allows users to lock certain files which is helpful in collaborating on projects. Within the game industry, Perforce is the industry standard tool for version control and code-sharing at the enterprise level. To use it, you'll have to download the Helix Visual Client (P4V) from the Perforce website.
+
+**Why is Perforce the industry standard?**
+
+You may have used other version control software in the past, like Git or SVN. These are great options because they're free to use.
+In an enterprise environment, there's something much more valuable than the cost of subscription software: access to support.
+
+There are a couple other reasons to prefer Perforce over Git.
+
+* Perforce handles binary files differently than Git in ways that are especially important in game development.
+* Perforce stores version history on a central server, which means each developer only needs the latest version on their computer.
+
+<Callout title="Download Perforce"> At the following website link, download and install [Perforce Helix Visual Client (P4V)](https://www.perforce.com/downloads/helix-visual-client-p4v).</Callout>
