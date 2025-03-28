@@ -2,16 +2,462 @@
 title: C# and the .NET Framework
 description: Components
 ---
+## Object-Oriented Programming
+C# is an object-oriented programming language, meaning that the code we write is organized into little blocks. Each object has its own data and capabilities such as variables and methods. These objects then work together to form a system. Object-oriented programming allows us to separate large programs into individual components called objects, each responsible for a small slice of the overall program. Objects belong to a class, which defines a category of things with the same structure and capabilities. 
 
-## Code Block
+The basic concept of object-oriened programming is that instead of putting all of our code into a single ever-growing blob of code, we split our program into multiple components called **objects**. Each object has a singly responsible for something and then collaborate t ogether to solve some problem. 
 
-```js
-console.log('Hello World');
+**The four basic principles of object-oriented programming are:**
+
+* **Abstraction:** Modeling the relevant attributes and interactions of entities as classes to define an abstract representation of a system.
+* **Encapsulation:** Hiding the internal state and functionality of an object and only allowing access through a public set of functions.
+* **Inheritance Ability:** to create new abstractions based on existing abstractions.
+* **Polymorphism Ability:** to implement inherited properties or methods in different ways across multiple abstractions.
+
+**Some key points of OOP:**
+
+- [x] Objects can be created/discarded while the program runs. When an object is no longer needed it can be removed
+- [x] Objects contain methods and variables. The variables store it data. The methods allow other objects to make requests to it
+- [x] Objects can communicate or coorinate with othe objects by calling one of its methods
+- [x] In C#, every object belongs to a specific **class** or **type**
+- [x] Several objects can belong to the same class. Objects of a particular class are called **instances** of a class
+- [x] There are many predefined classes of objects that exist a part of .NET and/or Unity. However, we can always define our own new classes as well
+- [x] C# provides support on how we can define new types from built-in ones, including enumerations, tuples, structs, and classes
+
+## Classes
+Being the king of the object-oriented world, classes are essential concepts to grasp. In C#, classes are a first and important step in creating objects by defining structure in your program, specifying behavior, and providing attributes for your objects. In short, classes are used to organize your C# code. In programming, a class can be visualized as a user-defined data type that holds both data (attributes) and the actions (methods) that are applied to that data. 
+
+Classes are reference types that are `null` by default until you explicitly create an instance of the class by using the `new` operator or assign it an object of a compatible type that may have been created elseswhere. They are some of the most powerful ways to define new types by bundling data (fields) and operations on that data (methods).
+
+To define a class in C#, we usually follow the [PascalCase](https://www.tuple.nl/knowledge-base/pascal-case) naming convention. The rules of PascalCase includes begining with an uppercase letter, excluding spaces and punctuation, and capitalizing the first letter of each word. 
+
+Below is an example of our public class `MyCustomer`, that is following thre PascalCase naming convention. The class definition is then enclosed with curly brackets `{}`.
+
+```c# title="DeclaringClasses.cs" linenums="1"
+public class MyCustomer 
+{
+    // Fields, properties, methods and events go here
+}
+    
 ```
 
-## Cards
+**Some important definitions:**
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+* `Object`: A thing in your software, responsible for a slice of the entire program. They define what information the object must remember and the capabilities it can perform when requested
+* `Classes`: Categorized C# objects to establish variables and methods of any object. Think of classes as a blueprint or pattern for objects that belong in a subset
+* `Constructor`: Helps new instances that are created by classes, to be ready for use. They are special methods that run when an object comes to life to ensure it begins life in a good state. They must use the same name as the class, and they cannot list a return type
+* `Properties`: Properties are used to define the attributes or data members of a class. They are defined within the class and provide access to the class’s internal state.
+* `Methods`: Methods are functions defined within the class that perform actions or operations. They can modify the class’s state or provide functionality.
+
+``` c# title="DeclaringClasses.cs" linenums="1"
+// Declaring an object of type MyClass.
+MyClass mc = new MyClass();
+
+// Declaring another object of the same type, assigning it the value of the first object.
+MyClass mc2 = mc;
+
+// Classes are declared by using the class keyword followed by a unique identifier
+// [access modifier] - [class] - [identifier]
+public class Customer 
+{
+    // Fields, properties, methods and events go here
+}
+
+// Objects can be created using the new keyword followed by the name of the class
+Customer object1 = new Customer();
+    
+```
+
+What does `public` in front of the class name mean? In this case, `public` is an access modifier, which helps control the visibility and accessibility of class members. 
+
+**Some common access modifiers:**
+
+* `public`: Members are accessible from any code.
+* `private`: Members are only accessible within the class.
+* `protected`: Members are accessible within the class and derived classes.
+* `internal`: Members are accessible within the same assembly (a group of related classes in the same project).
+* `protected internal`: Members are accessible within the same assembly and derived classes.
+* `private protected`: Members are accessible only from derived classes within the current assembly. This access modifier has been available since C# 7.2 and later.
+
+Static classes are defined using the static keyword and exclusively contain static members, such as methods, properties, and fields. Unlike regular classes, static classes cannot be instantiated with the new keyword. Instead, their members are accessed using the class name itself. These classes are commonly used for utility functions or to group related functionality.
+
+## Couroutines
+Courtines are really powerful in Unity by how they hook into Unity's core loop by running every frame. When a coroutine, it runs like a function until it reaches a `yield` statment. It then sets a sort of bookmark and `yields`, which tells the rest of the game to proceed. Each frame right after the `Update` function, Unity calls the coroutine again. The coroutine returns to its bookmark and checks its yield condition. When the yield condition is `true`, for exa mple, when 1.5 seconds have passed, the bookmark is deleted and the rest of the coroutine function runs as usual. Coroutines are functions and you call them with the following syntax. 
+
+**When to use couroutines in Unity:**
+
+* Create repeating actions
+* To run an animation or play a sound that doesn't change the game state
+
+``` c# linenums="1"
+// Coroutine basic setup
+StartCoroutine(PlayFlagpoleAnimation());
+
+IEnumerator PlayFlagpoleAnimation()
+{
+    // Do stuff
+    yield return someCondition;
+    // Do more stuff
+}
+    
+```
+
+Below is an example of Unity's built-in `WaitForSeconds` coroutine. While working in Unity, the coroutine you will use the most (by far) is Unity's built-in `WaitForSeconds` coroutine. The `yield` keyword means *keep going with the rest of the game*. Everything after the `return` is called the yield condition. It is something that will eventually be true. For example, afte 1.5 seconds have passed.
+
+=== "C#"
+
+``` c# linenums="1"
+// Do stuff
+// Then wait
+yield return new WaitForSeconds(1.5f);
+
+// Everything after the yield happens after 1.5 seconds
+    
+```
+
+The coroutine function can have more than one yield statement. It works the same way; the "bookmark" just moves to the latest yield statement. 
+
+=== "C#"
+
+``` c# linenums="1"
+// Do stuff
+// Then wait 1.5 seconds
+yield return new WaitForSeconds(1.5f);
+
+// Do stuff
+// Then wait 2 seconds
+yield return new WaitForSeconds(2.0f);
+    
+```
+## Generics
+
+Generics allow us to create code that is more "generic" so that it can be used and reused. Remember **"DRY"** in programming? Also known as **"Don't Repeat Yourself."** Generics are really helpful here in preventing the need for duplicate code - which is always a great thing. They help solve the problem of making classes or methods that would differ only by the types they use, leaving placeholders for types that can be filled in when used.
+
+Generics are created by adding `<T>` after the class name. `<T>` represents the generic type that gets set while being called. We can have multiple generic types in a class by separating them with commas like `<T, U, V>`. When declaring generics in Unity, the general naming convention starts from T and moves alphabetically down as T, U, V, etc. Feel free to make generic methods and gneeric types with multiple type parameters!
+
+To make your life easier, here are some existing and common generic types:
+
+* `Random` generates pseudo-random numbers
+* `DateTime` gets the current time and stores time and date values
+* `TimeSpan`represents a length of time
+* `List<T>` is a popular and versatile generic collection -- use it instead of arrays for most things
+* `IEnumerable<T>`is an interface for almost any collection type. The basis for `foreach` loops
+* `Dictionary<TKeym, TValue>` can look up one piece of information from another
+* `Nullable<T>` is a struct that can express the concept of a missing value for value types
+* `ValueTuple` is the secret sauce behind tuples in C#
+* `StringBuilder` is a less memory-intensive way to build strings a little at a time
+
+Any type definition that is defined as a generic is a **generic type**. These include classes, structs, or interfaces that leave placeholders the type it uses. They are similar to methods with parameters where they allow programmers to throw in a value. Below is an example of how you would define a generic type. 
+
+``` c# linenums="1"
+// Defining a Generic Type
+public class DefineGenericType List<T> {
+  private T[] items = new T[0]
+  public T Get ItemAt(int index) => items[index];
+  public void SetItemAt(int index, T value) => items[index] = value;
+
+  public void Add(T newValue) {
+    T[] updated = new T[items.Length + 1];
+
+    for (int index = 0; index < items.Length; index++ ) {
+      updated[index] = items[index];
+    }
+
+    updated[^1] = newValue;
+    items = updated;
+  }
+}
+    
+```
+
+When we defined the `DefineGenericType` class above, the `<T>` served as a placeholder for some type. This placeholder type is called a **generic type parameter**. It works just like a method parameter, except it works at a higher leve land stands in for a specific type taht will be chosen later. Conveniently, it can be used throughout the class an in several places in your code. 
+
+``` c# linenums="1"
+// Generic Class Example
+public class GenericClass <T> {
+  public Type GetMyType() {
+    return typeof (T);
+  }
+}
+    
+```
+The [Unity Scripting API Reference](https://docs.unity3d.com/2023.3/Documentation/ScriptReference/MonoBehaviour.html) documentation lists some functions (for example, the various GetComponent functions) with a variant that has a letter `<T>` or a type name in angle brackets after the function name. These are generic functions. You can use them to specify the types of parameters and/or the return type when you call the function.
+
+``` c# linenums="1"
+void FuncName<T>();
+// The type is correctly inferred because it is defined in the function call
+var obj = GetComponent<Rigidbody>();
+Rigidbody rb = go.GetComponent<Rigidbody>();
+    
+```
+## Inheritence
+
+Class inheritance means that a class can inherit from any other class that isn't sealed. Other classes can also inherit and override from your class. Classes that inherit must derive from another base class so that it can inherit data and behavior. This base class is specified by appending a colon and the name of the base class bollowing the derived class name. Inheritence lets you derive new classes based on existing ones. The new class inherits everything except constructors from the base class. Inheritence is important in accomplishing two things. 
+
+* Enables the treatment of subtypes as the more generalized type
+* Consolides code that would have otherwise been duplicated or copy-and-pasted
+
+In the C# language, a class can only directly inherit from one base class. You cannot directly derive from moe than one. The class then can directly implement one or more interfaces. By default, all classes inherit from `object` aka their base class, but you are able to claim a different class as the base class as well. 
+
+``` c# title="ClassInheritance.cs" linenums="1"
+// Declaring an object of type MyClass.
+public class Manager: Employee
+{
+    // Employee fields, properties, methods and events are inherited
+    // New Manager fields, properties, methods and events go here
+}
+    
+```
+
+## Enumerations
+In C#, types are important and so far we have used some common data types such as `int` and `string`. 
+
+Enumereations are types that are useful when we have a relatively small set of choices. They are custom types that lists the set of allowed values: `enum Season { Winter, Spring, Summer, Fall }`. We define enumerations always after our all our methods or in a separate file on its own. After defining your enumeration, you are able to use it as variable's type: `Season now = Season.Winter;`
+
+How do we define an enumeration? 
+
+An enumeration type (or enum type) is a value type defined by a set of named constants of the underlying integral numeric type. To define an enumeration type, use the enum keyword and specify the names of enum members. In the example below, we define a new enumeration by starting with the `enum` keyword, followed by the enumeration's name `(Season)`. A set of curly braces contains the options for the enumeration, separated by commas. In C#, remember that it is common practice to use UpperCamelCase for type names (such as enumerations) and enumeration numbers. The first item you list will be the enumeration's default value!
+
+``` c# title="DeclaringEnums.cs" linenums="1"
+// Declaring a new enumeration to represent seasons
+enum Season
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter
+}
+```
+
+With our `Season` emumeration defined, w can use it like any other type. For example, we can declare a variable whose type is `Season`.
+
+```
+// Declaring a variable with type Season
+Season current;
+```
+
+The compiler can also help us enforce that only legitimate seasons are assigned to this varible. In the example below, we have access to a specific enumeration value through the enumeration type name and the dot operator.
+
+```
+// Declaring a new enumeration to represent seasons
+Season current = Season.Summer;
+```
+
+By default, the associated constant values of enum members are of type int; they start with zero and increase by one following the definition text order. You can explicitly specify any other integral numeric type as an underlying type of an enumeration type. You can also explicitly specify the associated constant values, as the following example shows:
+
+``` c# title="DeclaringEnums.cs" linenums="1"
+// Declaring an enumeration type
+enum ErrorCode : ushort
+{
+    None = 0,
+    Unknown = 1,
+    ConnectionLost = 100,
+    OutlierReading = 200
+}
+```
+
+You cannot define a method inside the definition of an enumeration type. To add functionality to an enumeration type, create an extension method.
+
+## Tuples
+Tuples in C# are only used occasionally. However, they are useful in combining mulitple pieces into a single element. They combine multiple elements into a single bundle: `(double, double) point = (2, 4);`. They are sometimes referred to by the number of items in them: a 2-tuple if it has two t hings, an 8-tuple if it has eight things, etc. Tuples are value types, like `int`, `bool`, and `double`. That means they store their data inside them. Assigning one variable to another will copy all the data from all the items in the process. That is made a bit more complicated because tuples are composite types. If a tuple has parts that are value types themselves, those byptes will get copied. But if an item is a reference type, then the reference is copied.
+
+Forming a new tuple value - you can take the pieces you need and place them in parantheses, separated by commas.
+
+```
+// Forming a new tuple value
+(string, int, int) score = ("Debbie", 20, 15);
+
+// Forming a variable type
+var score = ("Debbie", 20, 15);
+
+// Access the items inside a tuple
+Console.WriteLine($"Name:{score.Item1} Level:{score.Item3} Score:{score.Item2}");
+
+// Tuple with different types
+(string, int, int) score1 = ("Debbie", 20, 15);
+(string, int, int) score2 = score1;
+```
+
+What about deconstructing or taking apart tuples?
+
+```
+var score = (Name: "Debbie", Points: 20, Level: 15);
+
+// Grab data out of a tuple by referencing the item by name
+string playerName = score.Name;
+```
+
+When you only need a single item from the tuple, this is a good way to do it. 
+
+**Deconstruction** or **unpacking** is a way to take all of the parts of a tuple and place them each into separate variables all at once. Tuple deconstruction has many uses, but a clever usage is swapping the contents of two variables. It is done by listing each of the variables to store the deconstructed tuple in parentheses:
+
+
+```
+string name;
+int points;
+int level;
+
+(name, points, level) = score;
+Console.WriteLine($"{name} reached level {level} with {points} points.");
+
+// Can also write the above lines like this
+(string name, int points, int level) = score;
+```
+
+## Problems
+
+Before we get can get started with the homework problems, please **fork** the following repository [`https://github.com/debbieyuen/ctin583-fa24-hw/`](https://github.com/debbieyuen/ctin583-fa24-hw/).
+
+???+ note "Step 1: Cloning with Terminal"
+
+    If you are using terminal, use `cd` to change into the your desired directory. Then `git clone https://github.com/debbieyuen/ctin583-fa24-hw/`.
+
+Now that you have successfully cloned the repository to your computer, it is time to create your own branch! Creating a branch will allow you to have your own version of the code to work off of without making changes to the main branch. In this way, each student will have a copy of the homework assignment to work on on their own respective branches. 
+
+
+Replace "debbie" with your first name. Here we create a new branch.
+``` 
+$ git branch debbie
+```
+
+Here we check-in to the branch we just created
+```
+$ git checkout debbie 
+```
+
+### Problem 1: Unity Packages
+In Unity, the `using` directives at the top of a C# script indicate which namespaces are being used in that script. A namespace in C# is a collection of classes, interfaces, enums, and other types that are organized logically. By including a `using` directive for a particular namespace, you make all the types in that namespace available in your script without needing to fully qualify them with their namespace every time you use them. Please write inline comments within `PlayerController.cs`. Comments are bits of text placed in your program, meant to be annotations on the code for humans -- you and other programmers. The compiler ignores comments.
+
+!!! question "Problem 1: Unity Packages"
+    Write in the comments what each line of `using` is doing. What are these packages in Unity?
+
+### Problem 2: Player Name
+In this problem, we will practice creating and using variables in C# in the context of Unity. A variable is declared by listing its type and its name together `(string username;)`.
+
+A variable is assigned a value by placing the variable name on the left side of an equal sign and the new value on the right side. This new value may be an expression that the computer will evaluate to determine the value `(username = Console.ReadLine();)`. 
+
+Retrieving the variable's current value is done by simply using the variable's name in an expression `("Hi " + username)`. In this case, your program will start by retrieving the current value in `username`. It then uses that value to produce the complete `"Hi [name]"` message. This combined message is what is supplied to the `WriteLine` method. 
+
+You can declare a variable anywhere within your code. Still, because variables must be declared before they are used, variable declarations tend to gravitate toward the top of the code. 
+
+In a C# Console App, we may define and print out our line similar to the block of code below:
+
+=== "C#"
+
+``` c# linenums="1"
+// Declaring a variable
+string username;
+// Assigning a value to a variable
+username = Console.ReadLine();
+// Retrieving its current value
+Console.WriteLine("My player's name is " + username);
+    
+```
+!!! question "Problem 2: Printing Variables"
+    In `PlayerController.cs`, convert the above code to work in Unity and print out in Unity's console. Define a `private` variable for your player or character's name. Where should you define the name? What is the syntax to print to Unity's console?
+
+### Problem 3: Unity Functions
+In Unity, scripts that inherit from MonoBehaviour can override several built-in methods that are automatically called by the Unity engine during the lifecycle of a game object. `Start()` and `Update()` are some of the most common Unity functions.
+!!! question "Problem 3: Unity Functions"
+    In `PlayerController.cs`, what are the `Start()` and `Update()` functions? Describe what they do in comments. What is the difference between `Start()` and `Update()`?
+
+### Problem 4: C# Functions
+!!! question "Problem 4: C# Functions"
+    We would like to transform the player's position along the vertical and horizontal axis. What are if statments? Lets write some if statements to move the player with the `WASD` Keys. Why is `Time.DeltaTime` needed here? 
+
+### Problem 5: Unity Attributes
+!!! question "Problem 5: Unity Attributes"
+    Attributes are markers that can be placed above a class, property or function in a script to indicate special behaviour. For example, you can add the HideInInspector attribute above a property declaration to prevent the Inspector from showing the property, even if it is public. C# contains attribute names within square brackets. What do `SerializeField`, `Header`, and `Tooltip` do? 
+
+### Problem 6: Input System
+!!! question "Problem 6: New Input System"
+    What are Unity's `OnEnable()` and `OnDisable()` functions? What do `movement.Enable()` and `movement.OnDisable` do?
+
+### Problem 7: Public & Private
+!!! question "Problem 7: Public and Private"
+    What is the difference between `public` and `private` classes and functions? What does it mean when there is no `public` or `private` in front of the class name is only `void`? What does `void` mean?
+
+### Problem 8: Player Mov't
+
+In your game, the player encounters enemies as well. Colliding with them will cause problems. But before we get to collisions, we need to call two existing functions
+
+Functions are used to group a block of code. This can be useful in many ways, for example, in the lecture about operations with variables we performed addition on two variables, what if you need to do that often in your code? Functions let you write one piece of code and reuse it over and over again! 
+
+!!! question "Problem 8: Movement()"
+    What are `Input.GetAxis`, `transform.Translate`, and `transform.Rotate`?
+    How do we call classes and functions? Where should we call them? In `EnemyCollision.cs`, call your `Movement()` and `Shoot()` functions.
+
+### Problem 9: Instantiate() 
+!!! question "Problem 9: Instantiate()"
+    Looking at the code in `EnemyCollion.cs`, is this code written for Unity's old or new input system? Please describe what `Instantiate()` is doing in the if statement.
+
+### Problem 10: Which Weapon
+
+Before we can use a class, we must define it or use a predefined class (Unity has many!).  Many C# programmers place each class in a separate file for organization. As our programs grow in size, having all our classes in one file can become overwhelming and disorganized. For this homework assignment, we will place them in the same file. 
+
+Defining a new class is done with the `class` keyword, followed by the class's name, followed by a set of curly braces. Names are usually capitalized with UpperCamelCase. Inside the class's curly braces, we can place the variables and methods that the class will need to do its job. 
+
+!!! question "Defining Classes"
+    In `EnemyCollision.cs` define a new, `public` class named `Weapons` and define `int` variables to represent `arrow`, `sword`, `rocket`. 
+
+
+Comments have a variety of uses:
+
+- [x] You can add a description about how some tricky piece of code works, so you don't have to try to reverse engineer it later.
+- [x] You can leave reminders in your code of things you still need to do. These are sometimes called `TODO` comments.
+- [x] You can add documentation about how some specific thing should be used or works. Great to help others look through your code
+- [x] You can temporarily comment out large chunks of code. A handy keyboard shortcut is `Command` and `/`.
+
+!!! question "Comments"
+    In `PlayerController.cs`, describe what each line of code is doing. Start from the very top of the file at `using.System.Collections;`
+
+### Problem 2: Barbie's Careers
+!!! question "Problem 2: Barbie's Careers"
+    Barbie wears many hats. She is a photographer, singer, athlete, painter, musician, rockstar, and much more. What is the function below trying to accomplish? How are we using the T variable in this case? Please instantiate an item of this class in your `BarbieWalletBalance.cs` file in your `Start()` or `Update()` functions.
+
+### Problem 3: Barbie's Account
+!!! question "Problem 3: Barbie's Account"
+    Convert the following function to a generic if needed. Then, write a private generic function named `BarbieBank`. `BarbieBank` should take in the parameters: `numOfPennies`, `cashAmount`, and `numOfCreditCards`. Have the function return a new generic array with the correct parameters. 
+
+### Problem 4: Inheritence: Short Answers
+!!! question "Problem 4: Inheritence: Short Answers"
+    * What is the "Protected" access modifier? How does it relate to inheritence and between two classes. 
+    * What is MonoBehaviour? Why do Unity C# scripts inherit from MonoBehaviour? Give some examples of Unity functions that come from MonoBehaviour. 
+    * What is multiple inheritance? Can we perform multiple inheritance in C#? Why or why not?
+    * What does "Protected virtual void" mean? When is it needed and what does virtual do in your code?
+    * What happens when a constructor in a parent class is called? How do we control which base class contructor is being called?
+
+### Problem 5: Barbie's House
+!!! question "Problem 5: Barbie's House"
+    Barbie's House needs to inherit everything from the BarbieWorld class in your `BarbieWorld.cs` file. Please modify the BarbieHouse class to inherit from BarbieWorld and write at least three methods within BarbieHouse representing furniture, pets, household items, food, etc. within her house. 
+
+## Problems
+We will be continuing with our programming assignments off of your own forked repositories. In order to grab the latest homework assignment, please sync your branch with Debbie's original repository which can be found at the following link: [`https://github.com/debbieyuen/ctin583-fa24-hw/`](https://github.com/debbieyuen/ctin583-fa24-hw/).
+
+### Problem 1: Switches
+The switch statement selects a statement list to execute based on a pattern match with a match expression. The switch statement is a multiway branch statement that provides an efficient way to transfer the execution to different parts of a code based on the value of the expression. The switch expression is of integer type such as int, char, byte, or short, or of an enumeration type, or of string type. The expression is checked for different cases and the one match is executed.
+
+!!! question "Problem 1: Switch Statements"
+    Finish the case statements for each collectible item listed in `CollectibleItems.cs`.
+
+### Problem 2: Calling Enums
+!!! question "Problem 2: Calling Enumerations"
+    Currently each case statement is written as a string. Enums are especially helpful in preventing spelling mistakes. Instead of using strings such as "Enemy" and "Gem", lets use an enum. 
+    Please modify each case statement to use an enum instead. 
+
+### Problem 3: Tuples
+!!! question "Problem 3: Tuples"
+    Define a normal tuple and a value tuple. When would you use a value tuple? 
+    Print out each value in your defined tuple with Debug.Log
+
+### Problem 4: Enums
+!!! question "Problem 2: Enumerations"
+    Define a new enum within this file taking in different types of particles. 
+    Examples include: FireParticles, GoldRibbons, Snowflakes, RainParticles, etc. 
+
+### Problem 5: Short Answers
+An important part of learning is feeling comfortable researching, looking stuff up, debugging problems, and reading documentation. Please do your own research to answer the questions in this section. In your `CollisionHandler.cs` file, please write short answers between 2 - 5 sentences for the following questions:
+!!! question "Problem 5: Short Response Questions"
+    * When would you use a tuple over a struct?
+    * How do we acces items in a tuple?
+    * Try visualizing your enum in the Unity Editor. How does it appear as?

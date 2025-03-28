@@ -3,11 +3,84 @@ title: Metahumans with UE5
 description: Your first document
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+## Digital Twins
 
-## What is Next?
+What are digital twins and how does Unreal Engine play a role in this context? According to Unreal Engine, a "digital twin is a 3D model of a physical entity". They can refer to highly detailed, real-time 3D representations of physical entities, people, or systems. These virtual counterparts replicate the behavior, appearance, and sometimes even the functionality of their real-world counterparts in a digital environment. 
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+Digital twins in Unreal Engine allows us to create real-time, high-fidelity simulations of a real-world object, process, or environment. As users, we can visualize, interact with, and analyze data or scenarios virtually. 
+
+Some use cases include: 
+
+* **Architecture and Construction:** Simulating buildings, cities, and infrastructure for planning and visualization.
+* **Manufacturing:** Monitoring and predicting machinery performance and factory workflows.
+* **Healthcare:** Creating detailed anatomical models for training, diagnostics, or treatment planning.
+* **Gaming and Entertainment:** Creating immersive environments that mirror real-world locations.
+
+## Digital Humans
+Virtual avatars and representations of people can be used as part of a digital twin. In Unreal Engine, MetaHumans are realistic-looking 3D human models generated with the MetaHuman Creator. Unreal is able to bring details in skin, fair, and facial expressions with Unreal. We can create MetaHumans to represent individuals for virtual meetings, trainings, simulations, and much more. In healthcare, we can also simulate patient behaviors for medical training or telehealth. In films and games, we can create realistic characters based on real-world individuals including ourselves! 
+
+## Problems
+
+For this homework assignment, please work with the character we have been working on during Unreal Mondays! Please make sure you are working with the project version with pathfinding (Unreal Engine AI with Navigation System - NavMesh).
+
+### Problem 1: Design Character
+
+???+ question "Step 1: Documentation"
+    Read Unreal's [documentation](https://dev.epicgames.com/documentation/en-us/metahuman/creating-a-metahuman-in-metahuman-creator) on creating Metahumans. Please not that you must be workin in Unreal Engine 5 or above. 
+
+    Here is also a corresponding YouTube tutorial that is helpful: [MetaHuman Animator Tutorial](https://www.youtube.com/watch?v=hZ2mkcd4C7M&t=3s)
+
+    {/* ![Image title](../Homework/hw14/problem1_1_documentation.png) */}
+
+???+ question "Step 2: Create Character"
+    If you are on Windows, please install the [MetaHuman Plugin](https://www.fab.com/listings/055a6486-ad17-4590-aa1e-261d47f7f041) from the Marketplace. Currently, the MetaHuman Plugin does not work on Linux and MacOS (unless I am mistaken). 
+
+    {/* ![Image title](../Homework/hw14/problem1_2_metahumanplugin.png) */}
+
+    If you are unable to access the MetaHuman Plugin, you may work with the [MetaHuman Creator](https://www.epicgames.com/id/login?response_type=code&redirect_uri=https%3A%2F%2Fmetahuman.unrealengine.com%2Feos-login-redirect&scope=basic_profile&client_id=xyza7891OORp4qeFMsqG8MGwJLsun9Tb) platform. 
+
+    {/* ![Image title](../Homework/hw14/problem1_2_metahumancretor.png) */}
+
+    Both MetaHuman Plugin and MetaHuman Creator allow you to design your own character; however, in my experience, MetaHuman Creator seemed to be more laggy.
+
+### Problem 2: Animating Characters
+
+???+ question "Step 1: Download Live Link"
+    After creating our 3D Metahuman Character, we would like to animate our characters by mapping our facial expressions to our 3D model.
+    Fist, install [Live Link for Unreal Engine](https://apps.apple.com/us/app/live-link-face/id1495370836) on your iOS devices. 
+
+    {/* ![Image title](../Homework/hw14/problem2_1_livelink.png) */}
+
+???+ question "Step 2: Calibrating"
+    We need to take some calibration videos! 
+    * Take a video of yourself looking: straight ahead, left angle, right angle, smile with teeth
+    * Take our main calibration video making a variety of facial expressions.
+
+    {/* ![Image title](../Homework/hw14/problem2_2_calibration.png) */}
+
+???+ question "Step 3: Capture Source"
+    Import footages and source files. One for each device.
+
+    {/* ![Image title](../Homework/hw14/problem2_3_capturesource.png) */}
+
+???+ question "Step 4: IP Address"
+    Make sure your IP address is matching. 
+
+    {/* ![Image title](../Homework/hw14/problem2_4_ipaddress.png) */}
+
+???+ question "Step 5: Metahuman Identity"
+    Calibrate a new human face based on footage.
+
+    {/* ![Image title](../Homework/hw14/problem2_5_metahumanidentity.png) */}
+
+### Problem 3: Deepfake
+
+???+ question "Step 1: DeepFaceLab (Optional)"
+    Turning your MetaHuman into a deepfake is optional for this homework assignment. However, creating a deep fake can be really fun! I recommend that you try making something :) 
+    To train your own deepfake we can follow the following resources:
+
+    * [DeepFaceLab](https://github.com/iperov/DeepFaceLab?tab=readme-ov-file): provides an overview of how we can make our own deepfake by inputting videos and images
+    * Then we can go to [Google's DeepFaceLab Colab](https://colab.research.google.com/github/dream80/DeepFakes_Colab/blob/master/DeepFaceLab_Colab.ipynb) or the [First Order Model Deepfakes Notebook](https://colab.research.google.com/github/JaumeClave/deepfakes_first_order_model/blob/master/first_order_model_deepfakes.ipynb). 
+
+    {/* ![Image title](../Homework/hw14/problem3_1_deepfake.png)
+    ![Image title](../Homework/hw14/problem3_2_deepfake2.png) */}

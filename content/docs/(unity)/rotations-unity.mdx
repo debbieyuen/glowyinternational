@@ -3,15 +3,125 @@ title: 3D Rotations and Positions
 description: Components
 ---
 
-## Code Block
+## Orientations
+What is an orientation? In general terms, the orientation of an object tells the direction the object is facing. An orientation in a 3D space is related to direction, angular displacement, and rotation. An example of this would be with vectors. A vector may have a direction but not an orientation in which a vector points in a certain direction with no real change to the vector itself. However, a 3D object has a certain direction. When the object is rotated and twisted, the orientation will also change.
 
-```js
-console.log('Hello World');
+In numeric terms, a big difference between direction and orientation can be expressed by how we parameterize a direction in 3D. A direction requires two numbers - **spherical coordinate angles**. An orientatipn requires at least three numbers - **Euler angles** and **Quaternions**.
+
+## Vector Dot Product
+When multiplying two vectors together, there are two types of vector products. The first vector product is the **dot product** or **inner product**. The dot product is important in video game programming, computer graphics, simulation, and AI.  Therefore, the dot product is an important concept and formula to grasp.
+
+The name "dot product" comes from the dot symbol used in the notation: `a * b`. Just like the scalar-times-vector multiplication, the vector dot product is performed before addition and subtraction, unless parantheses are used to override this default order of operations. While we usually omit the multiplication symbol when multiplying two scalars or a scalar and a vector, we must not forget the dot symbol when performing a vector dot product. The dot product of two vectors is the sum of the products of corresponding components, resulting in a scalar.
+
+**What does the vector dot product mean geometrically?**
+
+The vector dot product is fundamental to almost every aspect of 3D math. There are two main ways to interpet the dot product:
+
+* **Projection:** Assume that `a^` is a unit vector and `b` is a vector of any length. Now take `b` and project it onto a line parallel to `a^`. Then, we can define the dot product (`a^ * b`) as the signed length of the projection of `b` onto this line. This projection of `b` can be thought of as a shadow onto a. The result of a dot product is scalar, not a vector. The dot product `a * b` is equal to the signed length of the projection of `b` onto any line parallel to `a`, multiplied by the length of `a`.
+
+* **Trigonometry:** We can also examine the dot product through the lens of trigonometry.
+
+Unity has `Vector3.Dot` that gets the Dot Product of two vectors. The dot product is a float value equal to the magnitudes of two vectors multiplied to gether and then multiplied by the cosine of the angle between them. 
+
+``` c# title="DeclaringClasses.cs" linenums="1"
+// detects if other transform is behind this object
+
+using UnityEngine;
+using System.Collections;
+
+public class ExampleClass : MonoBehaviour
+{
+    public Transform other;
+
+    void Update()
+    {
+        if (other)
+        {
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 toOther = Vector3.Normalize(other.position - transform.position);
+
+            if (Vector3.Dot(forward, toOther) < 0)
+            {
+                print("The other transform is behind me!");
+            }
+        }
+    }
+}
+    
+```
+## Vector Cross Product
+The other vector product is known as the **cross product**. The cross product is only applied in 3D mathematical situations and is not commutative. The term "cross product" comes from the symbol used in the notation `a x b`. We write the cross symbol, rather than omitting it as we do with scalar multiplication.
+
+The cross product enjoys the same level of operator precedence as the dot product: multiplication occurs before addition and subtraction. When dot product and cross product are used together, the cross product takes precedence: `a * b x c = a * (b x c)`.
+
+## Euler Angles
+Euler Angeles are one of the most common ways of representing orientations and 3D rotations in Unity. Euler Angeles define an angular displacement as a sequence of three rotations amongst three mutually perpendicular axes. Together, these angles describe orientation as three rotations about three mutually perpendicular axes amongst any order of axes. They rotate about the body axes, so the axis of rotation for a given step depends on the angeles used in prior rotations. 
+
+**Advantages of Euler Angeles:**
+
+- Because Euler angeles parameterize orientation using three numbers, these numbers can be expressed as angles. Working with angles can be more intuitive and convenient to display numerically.
+- Euler angeles use the smallest possible representation.
+
+**Disdvantages of Euler Angeles:**
+
+- Because Euler angles are dependent on each other, each representation for a given orientation or rotation is not unique
+- Causes Gimbal lock in which a rotation amongst one axis will cause the other rotations to rotate about the same axis
+
+## Quaternions
+
+### Quaternions in Math
+
+In Division Algebra, Quaternions are a method to represent a solid 3D object's three dimensional orientations or other rotational quantity. The algebra for Quaternions consists of 4 dimensions, aka 4 scalar variables that are added and multipled as a single unit. These variables are also known as **Euler Parameters** and hold one real dimension and 3 imaginary dimensions. Each of these imaginary dimensions has a unit value of the square root of -1, but they are different square roots of -1 all mutually perpendicular to each other, known as i,j and k. So a quaternion can be represented as $a + i b + j c + k d$.
+
+For example, the equation $z^2 + 1 = 0$, has infinitely many quaternion solutions, which are the quaternions $z = b i + c j + d k$. The fundamental formula for Quaternion algebra is as follows: 
+
+```
+a + i b + j c + k d
 ```
 
-## Cards
+As such, these "roots of -1" form a unit square in the 3D space of vector quaternions. It may seem strange that there are 3 square roots of -1, but we have to remember that we are working in 4 dimensions so there are at least 3 ways to get round from +1 to -1. It is not very practical to try to draw 4 dimensions in 2 dimensions
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+```
+b^2 + c^2 + d^2 = 1
+```
+
+### Gimbal Lock
+
+Gimbal lock is the loss of one degree of freedom in a three-dimensional, three-gimbal mechanism that occurs when the axes of two of the three gimbals are driven into a parallel configuration, "locking" the system into rotation in a degenerate two-dimensional space. (Wikipedia)
+
+The term gimbal-lock can be misleading in the sense that none of the individual gimbals are actually restrained. All three gimbals can still rotate freely about their respective axes of suspension. Nevertheless, because of the parallel orientation of two of the gimbals' axes, there is no gimbal available to accommodate rotation about one axis, leaving the suspended object effectively locked (i.e. unable to rotate) around that axis. (Wikipeda)
+
+### Quaternions in Unity
+
+Quaternions are useful in accurately representing rotations. They are compact, don't suffer from gimbal lock and can easily be interpolated. Unity internally uses Quaternions to represent all rotations and expects Quaternions to be normalized. Luckily in Unity, the individual Quaternion components (x,y,z,w) do not need to be individually accessed or modified. You can take the existing rotations and from there, construct new rotations to smoothly interpolate between two rotations. The Quaternion functions that you will use 9% of the time are:
+
+* `Quaternion.LookRotation` z axis will be aligned with forward, X axis aligned with cross product between forward and upwards, and Y axis aligned with cross product between Z and X.
+* `Quaternion.Quaternion.Angle` Think of two GameObjects (A and B) moving around a third GameObject (C). Lines from C to A and C to B create a triangle which can change over time. The angle between CA and CB is the value Quaternion.Angle provides.
+* `Quaternion.Euler` Returns a rotation that rotates z degrees around the z axis, x degrees around the x axis, and y degrees around the y axis; applied in that order.
+* `Quaternion.Slerp` Use this to create a rotation which smoothly interpolates between the first quaternion a to the second quaternion b, based on the value of the parameter t. If the value of the parameter is close to 0, the output will be close to a, if it is close to 1, the output will be close to b.
+* `Quaternion.FromToRotation` Usually you use this to rotate a transform so that one of its axes eg. the y-axis - follows a target direction toDirection in world space.
+* `Quaternion.identity` This quaternion corresponds to "no rotation" - the object is perfectly aligned with the world or parent axes.
+* `Quaternion.operator` rotate one rotation by another, or to rotate a vector by a rotation
+
+## Problems
+
+It is Barbie's Birthday and she is hosting a birthday party!
+We are in a 2D World celebrating Barbie's Birthday and we are getting ready to break the pinata. 
+First, we would like to position Barbie and the pinata correctly. 
+
+Barbie is 5'9'' or 1.75 meters tall. 
+She is standing 2 feet or 0.6 meters away from the her party pinata.
+The party pinata is hanging 8.2 feet or 2.5 meters high from the ground.
+Assume that the angles between the distance of the pinata to the ground and Barbie's distance to the pinata create a 90 degree angle. 
+
+### Problem 1: Barbie's Pinata 
+!!! question "Problem 1: Barbie's Pinata"
+    Barbie is holding a bat to swing at the pinata. What should be the magnitude the bat should swing at? Make sure the check for edge cases including 1. Barbie has only three chances to swing at the pinata before it is the next player's turn. And 2. if Barbie runs out of turns, a message should display that Barbie's turn is over and it is the next player's turn
+
+### Problem 2: Barbie's Focus
+!!! question "Problem 2: Barbie's Focus"
+    Barbie can only make a valid swing when she is looking directly at the pinata. She cannot swing at other objects, players, and items. Check to make sure that Barbie is facing directly at the pinata. 
+
+### Problem 3: Spinning Pinata
+!!! question "Problem 2: Spinning Pinata"
+    Barbie swings her bat and the bat hits the pinata. The pinata is now rotating along the x axis. If Barbie hits the bat again, we want the pinata to spin along the x axis and the y axis. How do we get the correct overall rotation of the pinata?

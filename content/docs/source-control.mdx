@@ -14,7 +14,13 @@ Source control is useful for a number of different reasons. It allows us to trac
 In our guides, we will be using `Command Line` and `Terminal` to install packages and connect to Github. However, you are free to design your own workflow as you wish!
 
 ## GitHub
-GitHub is a platform and cloud-based service for software development and version control using Git. In order to use GitHub for large files, we must also download Git Large File Storage (LFS). In class, we will be learning how to use `Git` with the terminal and with [GitHub Desktop](https://desktop.github.com/).
+GitHub is a platform and cloud-based service for software development and version control using Git. Git and GitHub are complementary tools that work together to streamline the software development lifecycle. 
+
+Git is a free and open source distributed version control system that can be used for small to very large projects. Git is unique in that it has a branching model in which collaboraters may have multiple local branches that can work independently of each other. This allows us to create, merge, and delete lines of code efficiently. 
+
+In summary, Git is a free and open source tool that developers install onto their computers while GitHub is a cloud-based platform that runs Git. Together, they creae a system that helps us take care of our project history.
+
+In class, we will be learning how to use `Git` with the terminal and with [GitHub Desktop](https://desktop.github.com/).
 
 <Callout title="Create a GitHub Account">
 
@@ -22,11 +28,18 @@ GitHub is a platform and cloud-based service for software development and versio
 
 </Callout>
 
+In order to use GitHub for large files, we must also download Git Large File Storage (LFS). This is because GitHub limits the size of files allowed in repositories. To help us track files beyond our storage limit, we can use the Git Large File Storage. In my experience, Unreal Engine projects are large and I do not recommend Git for projects with Unreal. 
+
 <Callout title="Install Git and Git LFS">
 
     Install [Git](https://git-scm.com/) and download [Git LFS](https://git-lfs.com/).
 
 </Callout>
+
+On a Mac, you may check if you installed it correctly by:
+```
+git --version
+```
 
 ## Perforce
 Perforce is an industry standard in the game development industry in storing and sharing large projects and is known for its roots with version control. However, Perforce as a whole does much more than create version control tools. Perforce is ideal for large files and binaries that have a lot of assets. Perforce also allows users to lock certain files which is helpful in collaborating on projects. Within the game industry, Perforce is the industry standard tool for version control and code-sharing at the enterprise level. To use it, you'll have to download the Helix Visual Client (P4V) from the Perforce website.
