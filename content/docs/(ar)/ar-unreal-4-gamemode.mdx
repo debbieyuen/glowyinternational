@@ -47,8 +47,9 @@ Our `AR_GameMode` is helpful here in handling platform-specific beavior, configu
 
 Now we need to make sure we have all the settings configured correctly.
     1. `Edit/ Project Settings / Map & Modes` then navigate to the `Default Maps` tab and find **Game Default Map** where `APK Packaging: Orientation` should be `Sensor Portrait` or `Portrait`.
-    2. **If building to Android:** `Edit/ Project Settings / Platforms - Android` and uncheck `Support Vulkan`
-    3. **If building to iOS:** `Edit/ Project Settings / Platforms - iOS / XCode Projects` keep `Modern XCode` enabled by checking `Modernized Xcode`. Then, input your **Apple Dev Account Team ID**. Navigate to the `iOS` tab and input a `Bundle Display Name` and `Bundle Name` and check `Supports Portrait Orientation`.
+    2. `Edit/ Project Settings / Engine Input` set `Default Touch Interface` to `None`.
+    3. **If building to Android:** `Edit/ Project Settings / Platforms - Android` and uncheck `Support Vulkan`
+    4. **If building to iOS:** `Edit/ Project Settings / Platforms - iOS / XCode Projects` keep `Modern XCode` enabled by checking `Modernized Xcode`. Then, input your **Apple Dev Account Team ID**. Navigate to the `iOS` tab and input a `Bundle Display Name` and `Bundle Name` and check `Supports Portrait Orientation`.
 <Callout title="Apple Developer">
 
     Sign into your [Apple Developer Account](https://developer.apple.com/)
