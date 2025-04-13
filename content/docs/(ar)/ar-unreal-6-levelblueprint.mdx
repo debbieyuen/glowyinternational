@@ -1,0 +1,26 @@
+---
+title: Blueprint for Image Detection
+description: Checking if the detected image name matches your marker
+---
+
+In our AR marker-based app, the **Level Blueprint** serves as the central control system for the scene, managing key actions such as starting the AR session, responding to tracked images, and handling global game logic. When the level begins, the Level Blueprint can automatically initiate the AR session using our configured `D_ARSessionConfig`, enabling the app to start detecting image markers in the environment. As the app runs, the Level Blueprint can continuously check for tracked images using functions like `Get All Tracked Images`, and based on the names of the detected markers, it can spawn specific 3D objects, widgets, or card actors at the correct position and orientation of each marker. 
+
+For example, if the app detects a marker named *"Poes_Review,"* the Level Blueprint could spawn our 3D model or 3D cube that appears directly on the physical card. It can also remove or hide these actors if the corresponding marker is no longer visible. Unlike Actor Blueprints, which define the behavior of individual objects like a card’s appearance or interactivity, the Level Blueprint is better suited for scene-wide control such as managing AR session lifecycle, updating shared UI elements, or coordinating events that affect the whole game. In short, the Level Blueprint ties the AR environment together, making sure everything responds smoothly and consistently to the presence or absence of physical markers.
+
+<Callout title="Level Blueprint">
+
+    Read more about Unreal Engine's [Level Blueprint](https://dev.epicgames.com/community/learning/tutorials/w73/unreal-engine-level-blueprint)
+
+</Callout>
+
+## 15. Level Blueprinting
+Open the **Level Blueprint** for our **HandheldARBlankMap** by navigating to `Level Blueprints / Open Level Blueprint`.
+    1. Set up the configuration for the AR application by starting the **AR Session** and selecting our `D_ARSessionConfig`.
+    2. Get our geometries so that we can track our images. For every tracked image, we want to draw our tracked geometries while feeding in our array of elements. Once we have our tracked image, we need to track our 3D object. Therefore, we will need our local position so we can create a reference to our `Tracked Parent` object. 
+    3. Hit `Compile` and `Save`. If you have an er ror, restart the Unreal Engine Editor and reopen the project.
+
+<img 
+  src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744568076/LevelBlueprint_k7hbvw.png" 
+  alt="The Outliner Window Setup"
+  style={{ borderRadius: '12px' }}
+/>
