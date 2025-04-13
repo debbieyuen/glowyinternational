@@ -1,0 +1,25 @@
+---
+title: Lighting Types
+description: Your first document
+---
+
+## Lighting
+
+{/* ![Image title](./(unity)/hw12/illumination1.png) */}
+
+With Unity, you can achieve realistic lighting that is suitable for a range of art styles. Lighting comes in three formats or modes. To assign a `Mode`, select the Light in your `Scene`
+ and, in the `Light Inspector window`, select `Mode`.
+
+* **[Realtime](https://docs.unity3d.com/Manual/LightMode-Realtime.html)**: Unity calculates and updates the lighting of Realtime Lights every frame at runtime. Unity does not precompute any calculations for Realtime Lights.
+* **[Mixed](https://docs.unity3d.com/Manual/LightMode-Mixed.html)**: Unity performs some calculations for Mixed Lights in advance, and some calculations at runtime.
+* **[Baked](https://docs.unity3d.com/Manual/LightMode-Baked.html)**: Unity pre-calculates the illumination from Baked Lights before runtime, and does not include them in any runtime lighting calculations.
+
+In order to get started with adding lighting to your scene, add lighting and reposition it as needed in your scne. If you are using say, Baked Global Illumination, make sure the feature is turned on. Then, adjust each object's lighting settings accordingly. For baked lighting on objects, each object should be static. Finally, you may bake the lighting. A useful Unity package to help with visual effects is the [Post Processing package](https://docs.unity3d.com/Manual/PostProcessingOverview.html). 
+
+### Volumetric Lighting
+Unity's volume system is the main way to control the visual settings per camera in HDRP. Multiple volumes may share the same profile. We are able to adjust the size of the volume, contrast, saturation, and much more. When the camera enters the volume, the settings then are applied to the frame. 
+
+Volumetric lighting is useful in creating depth, therefore, directing attention to a specific object or space. Some examples of volumetric lighting include illuminating specific subjets, sunbeams shining through windows, and radiating when the sun is below the horizon. 
+
+### Dynamic Lighting
+Dynamic lighting is typically a type of simulated lighting that calculates lighting in real time. It is helpful in bringing suspense to games, especially horror experiences. In dynamic lighting, pulses of current are used to light a device. GameObjects that are dynamically lit usually requires some change in the Scene. In these cases, pre-calculated lighting aren't options. 

@@ -1,0 +1,57 @@
+---
+title: Realtime Global Illumination
+description: Your first document
+---
+
+## Realtime Global Illumination
+Unity's Realtime Global Illumination (GI) system relies on Enlighten, so that lighting precomputes take minutes rather than hours. It is useful for Lights that change slowly and have a significant visual impact on our game. This includes the sun moving across the sky, or a slowly pulsating light in a closed corridor. 
+
+This system allows us to work with **precomputed lighting**, which is the process of calculating the bounce of light around the static geometry within a scene in the Unity Editor and storing this data for use at run time. This process reduces the number of lighting calculations that must be performed at run time, allowing realtime bounced lighting while maintaining interactive frame rates. 
+
+1. Step 1: Read Documentation on Realtime GI
+    First read the documentation on Realtime Global Illumination: [Introduction to Realtime Global Illumination using Enlighten](https://docs.unity3d.com/Manual/realtime-gi-using-enlighten.html)
+
+2. Step 2: Enable Enlighten Realtime Global Illumination
+    Enable Realtime Global Illumination in your Scene by going to `Window` > `Rendering` > `Lighting` then enable `Realtime Global Illumination`.
+
+    Recall that baked lightmaps are textures that store the lighting. They are cheap at runtime but take time to generate. To generate lightmaps, we use the `Lighting` window. Select `Baked Indirect` as your **Lighting Mode**.
+
+    {/* ![Image title](../Homework/hw12/problemTwo/p2_2_rgi.png) */}
+
+    Then, select `Progressive GPU` as the progressive **Lightmapper**. 
+    If you like, you may customize sample counts and denoising options. 
+    Feel free to check out the documentation: [Enble Enlighten Realtime Global Illumination](https://docs.unity3d.com/Manual/realtime-gi-using-enlighten-use.html)
+
+    {/* ![Image title](../Homework/hw12/problemTwo/p2_2_2_progressive.png) */}
+
+3. Step 3: Baked Lightmaps
+    For the objects to participate in the Global Illumination (GI) computation, we will need to check **Contribute Global Illumination** in our meshes. Make sure they all receive lighting from our lightmaps. 
+    
+    {/* ![Image title](../Homework/hw12/problemTwo/p2_3_contributegi.png) */}
+
+4. Step 4: Reflection Probes
+    Reflection probes help capture local specular lighting. They are objects that can capture the surrounding environment into a cube map. The cube map is then used to provide specular lighting to the nearby objects. 
+    
+    Lets start with adding a **reflection probe** in front of the camera. 
+    
+    {/* ![Image title](../Homework/hw12/problemTwo/p2_4_1_addprobe.png) */}
+    
+    By default, it is a baked reflection probe and looks like a black sphere. Once baked, it has successfully captured the surrounding environment.
+
+    {/* ![Image title](../Homework/hw12/problemTwo/p2_4_2_blacksphere.png) */}
+
+    To capture correct local reflections, we need to place more reflection probes. Updating the bounds, the capture point, and the fade distance for each probe can be a time-consuming task. 
+    
+    How should we place our relection probes? We can group them by the same lighting condition. If they have the same lighting condition, we can share the same reflection probe. Usually the more probes, the more exact the reflections. However, this will have a memory cost. 
+
+    To test your reflections, you may change your materials to **Mirrors**. 
+
+5. Step 5: Generate Lighting
+    In the `Lighting` panel, we can then press on `Generate Lighting` to produce lightmaps. Using the Unity Realtime Global Illumination system with Enlighten, it should take a couple of minutes to generate or less than a minute. During this time, the lightmaps are gettting denoised, compressed, and stored as EXR.
+    
+    {/* ![Image title](../Homework/hw12/problemTwo/p2_5_generate.png) */}
+
+6. Step 6: Rendering Debugger
+    We may also visualize our work with the **Rendering Debugger**. Open the debugger by going to `Window` > `Analysis` > `Rendering Debugger`. When in **Play Mode**, we can press `LeftCtrl` + `Backspace` (`LeftCtrl` + `Delete` on macOS). On a console controller, press `L3` and `R3` (Left Stick and Right Stick).
+
+    Feel free to read the documentation: [Rendering Debugger](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@12.1/manual/features/rendering-debugger.html#how-to-access)

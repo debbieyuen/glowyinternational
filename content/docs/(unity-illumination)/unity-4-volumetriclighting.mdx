@@ -1,0 +1,64 @@
+---
+title: Volumetric Lighting
+description: Your first document
+---
+
+We will be experimenting with Unity's **Adaptive Probe Volumes (APV)** as part of Unity 6. Please follow the steps below.
+
+## Volumetric Lighting
+
+    1. Step 1: Create HDRP Project: Create a new Unity HDRP project such as starting with the **High Definition 3D Sample** template in Unity. 
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_1_hdrp.png) */}
+
+    2. Step 2: HDRP Tutorial: Step through the **High Definition Render Pipeline** tutorials. 
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_2_hdrptutorial.png) */}
+
+    3. Step 3: Clear Baked Lighting Data: Unbake all Lighting data. This way we can start with a base scene and recreate our own lighting.
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_3_cleardata.png) */}
+
+    4. Step 4: Create a new Volume
+    Unity's volume system is the main way to control the visual settings per camera in HDRP. Multiple volumes may share the same profile. We are able to adjust the size of the volume, contrast, saturation, and much more. When the camera enters the volume, the settings then are applied to the frame. 
+
+    First, lets create a new volume
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_4_createvolume.png) */}
+
+    5. Step 5: Create a new Profile
+    Then, create a new profile
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_5_newprofile.png) */}
+
+    6. Step 6: Add Override
+    Then, `Add Override` and `Color Adjustments`
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_6_override.png) */}
+
+    7. Step 7: Experiment!
+    Apply your overrides to your frame and try moving in and out of your volume. Try setting your Mode to `Global` or `Local`.
+    We can adjust many things including the sky and post processing. 
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_7_experiment.png) */}
+
+    8. Step 8: Disable the Fog
+    Now lets try to set up the sky for HDRI with the volume system. This is done with a visual override. If we deselect the `Fog`, we can see that the HDRI unobstructed. 
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_8_fog.png) */}
+    
+    9. Step 9: Visual Environment
+    In your `Hierarchy` window, you may go to `Lighting` > `Volumes` > `Volume Global`. Then, in your `Inspector`, you will see `Visual Environment`. There, you can choose between four types of skies including: non-HDRI sky, HDRI Sky, Physically Based Sky, and Gradient Sky. 
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_9_environment.png) */}
+
+    10. Step 10: Sky Exposure Values
+    Remember to make sure all your baked data is cleared so that we can see that in the absence, of proper indirect lighting, HDRP will always fall back to the sky probe. Now you can try adjusting the exposure values.
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_10_sunexposurevalues.png) */}
+
+    11. Step 11: Sun Light
+    What if we would like to have bounce lighting? HDRP is physically based, so we can control the color temperature of the light using the Kelvin scale.  In your `Hierarchy` window, you may go to `Lighting` > `Directional Light Sun`. Then in your `Inspector` window, we can find the `Light` component and then the `Emission` tab. We can try using the **Day Light** preset. Now try experimenting with the **Shadows** override components and the **Indirect Lighting Controller** component. Adjusting the Indirect Lighting Controller values can be a quick way to dim unwanted ambient lighting without using Unity Global Illumination. 
+
+    {/* ![Image title](../Homework/hw12/problemOne/p1_11_sunlight.png) */}
+
