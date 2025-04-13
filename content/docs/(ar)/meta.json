@@ -1,11 +1,12 @@
 {
     "title": "UE5 AR Marker App",
     "pages": [
-    "ar-introduction", 
-    "ar-unreal-template",
-    "ar-unreal-contentdrawer",
-    "ar-unreal-blueprint",
-    "ar-unreal-building",
-    "ar-unity"
+    "ar-unreal-1-introduction", 
+    "ar-unreal-2-scenesetup",
+    "ar-unreal-3-cameracomponents",
+    "ar-unreal-4-gamemode",
+    "ar-unreal-5-markerdetection",
+    "ar-unreal-6-projectsettings",
+    "ar-unreal-7-building"
 ]
 }

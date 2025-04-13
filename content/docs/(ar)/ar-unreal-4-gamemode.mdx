@@ -1,0 +1,26 @@
+---
+title: Cross-Platform Game Modes
+description: Writing our Blueprints
+---
+
+## 8. Creating AR Game Mode
+In Unreal Engine, you typically use a custom AR_GameMode when building AR applications for Android and iOS to set up the core rules, behavior, and environment needed for augmented reality experiences. Like other Game Modes, our `AR_GameMode` defines the rules and flow of the experience or game. This may include defining who the player is, what happens when the game starts, and what actors get spawned. This is especially important when spawning AR sessions and trackable objects. 
+
+As we continue to develop this AR application in the future, the `AR_GameMode` can help us with the AR session lifecycle such as starting, pausing, and stopping. In addition to showing and displaying UI, notifications, 3D models, animations, and much more. 
+
+<img 
+  src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744516202/ARGameMode_slsqjq.png" 
+  alt="The Outliner Window Setup"
+  style={{ borderRadius: '12px' }}
+/>
+
+With Unreal's default AR template, you should find a `BP_ARGameMode` defined for you. If you do not have one, in your **Content Drawer**, right click and create new `Blueprint Class / Game Mode Base`. Then, name your Blueprint **BP_ARGameMode**. Finally, make sure that in the **Details** panel, the `Default Pawn Class` is set to your AR Pawn, which in our case would be `BP_ARPawn`.
+
+## 9. Cross-Platform Handling
+Because we are designing for a mobile device, the scene will need to be preared for **ARKit (iOS)** or **ARCore (Android)** input. Since ARKit and ARCore have and are different APIs, Unreal Engine abstracts that with the **ARSessionConfig** and AR-specific actors/components. Our `AR_GameMode` is helpful here in handling platform-specific beavior, configuring the `ARSession`, and bringing a consistent experience across platforms. 
+
+<img 
+  src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744512740/ProjectSettings_Mode_hwiwiq.png" 
+  alt="The Outliner Window Setup"
+  style={{ borderRadius: '12px' }}
+/>
