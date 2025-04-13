@@ -3,9 +3,32 @@ title: Building to the Phone
 description: Building the AR app to the phone
 ---
 
-Let's start creating a marker app with Unreal Engine! By the end of this section, you will have an AR application that detects markers and displays a 3D model. 
+Building a mobile app with Unreal Engine involves setting up your project to support either Android or iOS, configuring mobile-friendly rendering, and deploying the app to your device for testing or distribution. The steps include enabling the mobile platforms, setting up device-specific SDKs, configuring project settings, and using Unreal’s [Android Launch Screens](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-android-launch-screens-in-unreal-engine) or [packaging the project](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-an-unreal-engine-project-for-mobile-platforms) to build and deploy.
+
+The process differs between iOS and Android mainly because of platform-specific requirements. Android uses open tools like Android Studio, and deployment can be done directly from Windows. iOS, however, requires a Mac and Apple’s Xcode for code signing and provisioning with an [Apple Developer Account](https://developer.apple.com/). iOS also often requires remote building from a Mac if you’re using Windows.
+
+When you're making an AR app, these setup steps are important because AR features depend on device-specific AR frameworks: ARCore for Android and ARKit for iOS. Unreal Engine supports both through its AR plugin system, but you still need the platform-specific tools to compile and run those features on a physical device. AR apps also need camera access, good performance, and proper handling of device sensors, which makes correct setup and testing on real hardware essential.
+
+<Callout title="Creating a Mobile Project">
+
+    Read more about configuring a project for [mobile](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-an-unreal-engine-project-for-mobile-platforms) in Unreal Engine.
+
+</Callout>
 
 ## 10. Building to the Phone
 
 ### iOS and Mac
+
+<Callout title="Building to iOS with XCode">
+
+    Read more about configuring a UE5 project for [iOS](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-an-unreal-engine-project-for-ios). While Epic's software is available free of charge, Apple Developer accounts cost a fee of $99 per year. Keep this in mind when registering your account.
+
+</Callout>
+
 ### Andorid and Windows
+
+<Callout title="Building to Android">
+
+    Read more configuring a UE5 project for [Android](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-unreal-engine-projects-for-android-development).
+
+</Callout>
