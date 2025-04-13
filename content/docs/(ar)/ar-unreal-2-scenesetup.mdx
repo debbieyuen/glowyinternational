@@ -42,14 +42,16 @@ Once you have your project open, there are a couple of important files that you 
 </Callout>
 
 ## 4. Scene Setup in the Outliner
-In the **Outliner** window, delete everything except for the `DirectionalLight` and `SkyLight`. Next, create a new **Actor** object at `(0, 0, 0)` and name it **TrackedParent**.
-Within **TrackedParent**, begin with a 3D cube by adding `Shapes/ Cube` also at `(0, 0, 0)`.
+In the **Outliner** window, delete everything except for the `DirectionalLight` and `SkyLight`. Next, create a new empty **Basic/ Actor** object at `(0, 0, 0)` and name it **TrackedParent**.
+Within **TrackedParent**, begin with a 3D cube by adding `Shapes/ Cube` also at `(0, 0, 5)`.  In order for the 3D cube to be nested within **TrackedParent**, it must be set to `Movable` in Mobility. 
 
 <img 
   src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744505587/Screenshot_2025-04-11_at_9.33.25_PM_uqq6y6.png" 
   alt="The Outliner Window Setup"
   style={{ borderRadius: '12px' }}
 />
+
+Finally, we will adjust the 3D cube's scale to `(0.1, 0.1, 0.1)`. If you have your own 3D model, you may bring it in here and scale it to be around the 3D cube's size.
 
 ## 5. 3D Models and Materials
 To make sure we are able to see our 3D cube, we will need to add a material. In your **Content Drawer**, create a new **Material** and name it **Unlit Cube Material**. Next, attach it to the 3D cube by dragging the material onto it. Once it is attached, open up the new material you created to link up the material specs and ensure that the `Shading Model` is set as `Unlit`.

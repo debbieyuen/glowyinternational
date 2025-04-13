@@ -3,14 +3,69 @@ title: Marker Images and Detection
 description: Importing our images 
 ---
 
-Now that we have our scene setup, we want to create some files and import our images that we will be using as markers. 
+Now, we will need to set up our ARSession Config to track and detect our 2D images and markers.
 
-## 10. AR Plugins
 
-## 11. ARSession Config
+## 11. Creating Marker Images
+Creating an AR marker app for a card game, for example, can help in bringing static cards to life. We can add dynamic 3D animations, sound effects, and other interactive elements by overlaying visual cues or user interfaces directly onto the cards. We can even save the cards into a book or collection. This fusion of physical cards and digital effects can add an additional layer to the experience, allowing players to do more beyond the c ard's surface and into a shared augmented space. By enabling multiplayer or remote play through AR scenes between players, we can change how card games are experienced with and without physical cards. Ultimately, AR marker applications can open up the possibilities for hybrid and digital experiences. 
 
-## 11. Importing Marker Images
+### Designing Cards in Unreal
+Designing a card template in Unreal Engine means we will be building a reusable Blueprint or UI layout that can represent cards in our game. This may invovle physical (scanned via AR marker) or digital (displayed on mobile screen). 
 
-## 11. Creating CandidateImages 
+**Here are some resources on how to get started:**
 
-## 12. Image Dimensions
+| Resource | Description |
+| ----- | ----------- |
+| [Building Your UI](https://dev.epicgames.com/documentation/en-us/unreal-engine/building-your-ui-in-unreal-engine) | Creating widget templates |
+| [Unreal Motion Graphics UI Designer (UMG)](https://dev.epicgames.com/documentation/en-us/unreal-engine/umg-ui-designer-quick-start-guide-in-unreal-engine)| Creating dynamic elements | 
+| [Widget Blueprints](https://dev.epicgames.com/documentation/en-us/unreal-engine/widget-blueprints-in-umg-for-unreal-engine)| Creating widget blueprints |
+| [Card Structs](https://dev.epicgames.com/documentation/en-us/unreal-engine/structs-in-unreal-engine) | Using structs for card creation |
+
+### Designing with 2D Design Software
+
+We may design our cards using a variety of design tools outside of Unreal Engine. 
+
+| Resource | Description |
+| ----- | ----------- |
+| [Tabletop Simulator (Steam)](https://kb.tabletopsimulator.com/) | Make your own online board games |
+| [Card Creator (Steam)](https://store.steampowered.com/app/523600/Card_Creator/)| Card generation software | 
+| [Squib](https://squib.rocks/)| A Ruby DSL for prototyping card and board games |
+| [Reliquary](https://www.figma.com/community/file/1275154862033544192) | A card and board game design tool for Figma |
+| [Dextrous](https://www.dextrous.com.au/) | Card prototyping for tabletop games | 
+| [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) | Include Adobe Photoshop, Illustrator, and InDesign | 
+| [Canva](https://www.canva.com/templates/s/board-game/)| Board and card game templates |
+
+## 12. Importing Marker Images
+Once you have your marker images, make sure you have the following: 
+    * Dimensions of your cards in *cm*
+    * Cards and markers are created in `RGBA` 
+    * Exported as *.png* or *.jpg* or similar format 
+
+In your **Content Drawer**, create a new folder for your marker images. Right click and select `Import to` and select your images. Your images will import as `Textures`.
+
+Start with clicking on one of the `Textures` you just imported. In the **Details** panel, set the following: 
+    1. Navigate to `Compression / Compression Settings` and then set it to `UserInterface2D (RGBA)`
+    2. Navigate to `Texture` where `sRGB should be checked `True`
+    3. Navigate to `Level of Detail / Texture Group`: Change the dropdown selection to `UI`
+
+Do the same for each `Texture` you imported.
+
+## 13. Configuring Marker Images
+    1. **Creating CandidateImages:** In your **Content Drawer**, navigate to `Miscellaneous / Data Asset / AR Candidate Image`. Name your **Candidate Image** to something like `[Image Title]_CandidateImage`.
+    2. **Candidate Image Specs:** Open up the **CandidateImage** you created. Give it a `Friendly Name`, `Candidate Texture`: An image you uploaded, `Width and Height`: Should be in *cm*.
+
+<img 
+  src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744568073/AR_SessionConfig_CandiateImages_bkum26.png" 
+  alt="The Outliner Window Setup"
+  style={{ borderRadius: '12px' }}
+/>
+
+## 14. Configure AR Session Config
+
+Now that we have our marker images set up, we will link our images to our `D_ARSessionConfig`. Open up your AR Session Config where under the **Details** panel, add all of your Candidate Images. 
+
+<img 
+  src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744572304/candidateimage1_ayywkn.png" 
+  alt="The Outliner Window Setup"
+  style={{ borderRadius: '12px' }}
+/>
