@@ -17,10 +17,40 @@ As we continue to develop this AR application in the future, the `AR_GameMode` c
 With Unreal's default AR template, you should find a `BP_ARGameMode` defined for you. If you do not have one, in your **Content Drawer**, right click and create new `Blueprint Class / Game Mode Base`. Then, name your Blueprint **BP_ARGameMode**. Finally, make sure that in the **Details** panel, the `Default Pawn Class` is set to your AR Pawn, which in our case would be `BP_ARPawn`.
 
 ## 9. Cross-Platform Handling
-Because we are designing for a mobile device, the scene will need to be preared for **ARKit (iOS)** or **ARCore (Android)** input. Since ARKit and ARCore have and are different APIs, Unreal Engine abstracts that with the **ARSessionConfig** and AR-specific actors/components. Our `AR_GameMode` is helpful here in handling platform-specific beavior, configuring the `ARSession`, and bringing a consistent experience across platforms. 
+Because we are designing for a mobile device, the scene will need to be preared for **ARKit (iOS)** or **ARCore (Android)** input. Since ARKit and ARCore have and are different APIs, Unreal Engine abstracts that with the **ARSessionConfig** and AR-specific actors/components. 
+
+<Callout title="Augmented Reality with Apple">
+
+    Resources for creating AR applications for Apple devices. 
+        * [Apple Augmented Reality](https://www.apple.com/augmented-reality/)
+        * [ARKit](https://developer.apple.com/augmented-reality/arkit/)
+        * [RealityKit](https://developer.apple.com/augmented-reality/realitykit/)
+        * [Reality Composer](https://developer.apple.com/augmented-reality/tools/)
+
+</Callout>
+
+<Callout title="Augmented Reality with Google">
+
+    Resources for creating AR applications for Android devices.
+        * [Google AR and VR](https://arvr.google.com/)
+        * [ARCore](https://developers.google.com/ar)
+        * [Geospatial Creator](https://developers.google.com/ar/geospatialcreator)
+
+</Callout>
+Our `AR_GameMode` is helpful here in handling platform-specific beavior, configuring the `ARSession`, and bringing a consistent experience across platforms. 
 
 <img 
   src="https://res.cloudinary.com/dndyjuvjl/image/upload/v1744512740/ProjectSettings_Mode_hwiwiq.png" 
   alt="The Outliner Window Setup"
   style={{ borderRadius: '12px' }}
 />
+
+Now we need to make sure we have all the settings configured correctly.
+    1. `Edit/ Project Settings / Map & Modes` then navigate to the `Default Maps` tab and find **Game Default Map** where `APK Packaging: Orientation` should be `Sensor Portrait` or `Portrait`.
+    2. **If building to Android:** `Edit/ Project Settings / Platforms - Android` and uncheck `Support Vulkan`
+    3. **If building to iOS:** `Edit/ Project Settings / Platforms - iOS / XCode Projects` keep `Modern XCode` enabled by checking `Modernized Xcode`. Then, input your **Apple Dev Account Team ID**. Navigate to the `iOS` tab and input a `Bundle Display Name` and `Bundle Name` and check `Supports Portrait Orientation`.
+<Callout title="Apple Developer">
+
+    Sign into your [Apple Developer Account](https://developer.apple.com/)
+
+</Callout>
