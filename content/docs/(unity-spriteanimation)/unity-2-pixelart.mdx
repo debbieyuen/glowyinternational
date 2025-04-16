@@ -1,0 +1,23 @@
+---
+title: Pixel Art
+description: Sprite Animations
+---
+
+<img 
+  src="https://images.pexels.com/photos/7864613/pexels-photo-7864613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+  alt="Extended Reality Headset"
+  style={{ borderRadius: '12px' }}
+/>
+
+When working with 2D sprites in Unity, getting the drawing resolution right is essential to ensure that your sprites appear crisp and clean, rather than blurry or unintentionally pixelated—unless you're aiming for a pixel art aesthetic. The key is to draw your sprite at the resolution you want it to appear in the game. For example, if you want the final image to be 512x512 pixels, you should draw it at exactly that resolution. Pixel art games often use much smaller sprite sizes, such as 16x16, 24x24, 32x32, or 64x64 pixels. These smaller sprites are then scaled up within the game, making each original pixel appear larger while maintaining sharp edges and that classic pixelated style.
+
+In Unity, an important setting for sprite resolution is Pixels Per Unit (PPU), which controls how many pixels in your sprite correspond to one Unity world unit. For best results with pixel art, you should match the PPU to the actual resolution of your sprite. For example, if your character sprite is 32x32 pixels, setting the PPU to 32 ensures that it occupies exactly one Unity unit in both width and height. This alignment keeps your art proportional and avoids unintended stretching or scaling artifacts. In general, always match the PPU to the sprite’s resolution for clean scaling and consistent visual appearance in the game world.
+
+## Creating Pixel Art
+
+| Resource | Description |
+| ----- | ----------- |
+| [Aseprite](https://www.aseprite.org/) | Pixel Art Tool |
+| [Spriters Resource](https://www.spriters-resource.com/)| Wikipedia for Games | 
+| [Graphics Gale](https://graphicsgale.com/us/)| Animation Graphics Editor |
+| [Pixilart](https://www.pixilart.com/) | Make pixel art |
